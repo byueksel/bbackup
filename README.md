@@ -3,7 +3,7 @@ A simple PowerShell backup script that uses 7zip
 
 ## Requirements
 * PowerShell
-* 7zip (http://7zip.org)
+* 7zip (http://7-zip.org)
 
 ## How to run the script
 
