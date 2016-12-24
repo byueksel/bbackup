@@ -56,7 +56,7 @@ If ((Test-Path $target) -eq 0) {
 }
 
 # Switches
-$switches="-ssw -ssc -ms=off"
+$switches="-ssw -slp -scsUTF-8 -sccUTF-8 -bd -bb1 -bsp0 -bso1 -bse2 -mtm=on -mtc=on -mta=on"
 
 # Check encryption
 if($encrypt) {
@@ -111,9 +111,14 @@ if((Test-Path "$dest\$name-full-*.7z") -eq 1) {
 # Start Backup
 write-host "Starting backup to $dest ..." -ForegroundColor green
 
-Start-Process -FilePath $p7z -ArgumentList $command -Wait -WindowStyle Hidden
-
-write-host "Backup to $dest is complete" -ForegroundColor green
-write-host
+$proc = Start-Process -FilePath $p7z -ArgumentList $command -Wait -WindowStyle Hidden -PassThru
+	
+if($proc.ExitCode -eq 0) {
+	write-host "Backup to $dest is complete" -ForegroundColor green
+	write-host 
+} else {
+	write-host "Backup failed with exit code: " + $proc.ExitCode -ForegroundColor red
+	write-host 
+}
 
 
