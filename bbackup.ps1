@@ -18,6 +18,7 @@ param (
     [string]$name = (get-item env:"COMPUTERNAME").Value,
     [string]$target = "",
 	[switch]$encrypt=$false,
+	[switch]$shutdown=$false,
 	[switch]$help=$false
 )
 
@@ -27,6 +28,7 @@ if($help) {
 	write-host "Options"
 	write-host "  -name <NAME> The Name of the Backup"
 	write-host "  -encrypt     Encrypt the Backup"
+	write-host "  -shutdown    Shutdown Computer after Backup"
 	write-host "  -help        Shows this Help information"
 	write-host
 	Return
@@ -116,6 +118,9 @@ $proc = Start-Process -FilePath $p7z -ArgumentList $command -Wait -WindowStyle H
 if($proc.ExitCode -eq 0) {
 	write-host "Backup to $dest is complete" -ForegroundColor green
 	write-host 
+	if($shutdown) {
+	    Stop-Computer
+	}
 } else {
 	write-host "Backup failed with exit code: " + $proc.ExitCode -ForegroundColor red
 	write-host 
