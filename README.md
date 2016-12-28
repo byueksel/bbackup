@@ -1,5 +1,5 @@
 # bbackup
-A simple PowerShell backup script that uses 7-zip.
+A simple PowerShell backup script that uses 7-Zip.
 
 ## Features
 * differential backups
@@ -7,7 +7,7 @@ A simple PowerShell backup script that uses 7-zip.
 
 ## Requirements
 * PowerShell
-* 7-zip (http://7-zip.org)
+* 7-Zip (http://7-zip.org)
 
 ## How to run the script
 
@@ -22,5 +22,13 @@ The script will create a new folder on the specified target (if it does not exis
 If there already is a full backup on the target it will start a differential backup.
 
 ## Options
+
+Option | Description | Default | Required?
+--- | --- | --- | ---
+`target` | Expects a location where to store the backup. | - | Yes
+`name` | Expects a String that will be used as backup name. | Computername | No
+`encrypt` | Backup will encrypted with ZipCrypto if this option is given. | false | No
+`shutdown` | The Computer will shutdown after Backup if this option is given | false | No
+`help` | Displays Help Text | false | No
 
 To see all options run: `bbackup.ps1 -help`
