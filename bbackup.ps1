@@ -59,7 +59,7 @@ If ((Test-Path $target) -eq 0) {
 }
 
 # Switches
-$switches="-ssw -slp -scsUTF-8 -sccUTF-8 -bd -bb1 -bsp0 -bso1 -bse2 -mtm=on -mtc=on -mta=on"
+$switches="-t7z -ssw -slp -scsUTF-8 -sccUTF-8 -bd -bb1 -bsp0 -bso1 -bse2 -mtm=on -mtc=on -mta=on"
 
 # Check encryption
 if($encrypt) {
