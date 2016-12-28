@@ -27,7 +27,7 @@ Option | Description | Default | Required?
 --- | --- | --- | ---
 `target` | Expects a location where to store the backup. | - | Yes
 `name` | Expects a String that will be used as backup name. | Computername | No
-`encrypt` | Backup will encrypted with ZipCrypto if this option is given. | false | No
+`encrypt` | Backup will encrypted with AES-256 if this option is given. | false | No
 `shutdown` | The Computer will shutdown after Backup if this option is given | false | No
 `help` | Displays Help Text | false | No
 
