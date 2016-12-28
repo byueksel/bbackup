@@ -26,10 +26,11 @@ if($help) {
 	write-host "BBackup  Copyright (C) 2016  Burak Yueksel <brkyksl58@gmail.com>"
 	write-host "Usage: bbackup.ps1 -target <TARGET> <OPTIONS>"
 	write-host "Options"
-	write-host "  -name <NAME> The Name of the Backup"
-	write-host "  -encrypt     Encrypt the Backup"
-	write-host "  -shutdown    Shutdown Computer after Backup"
-	write-host "  -help        Shows this Help information"
+	write-host "  -target <TARGET> Target of the Backup"
+	write-host "  -name <NAME>     The Name of the Backup"
+	write-host "  -encrypt         Encrypt the Backup"
+	write-host "  -shutdown        Shutdown Computer after Backup"
+	write-host "  -help            Shows this Help information"
 	write-host
 	Return
 }
