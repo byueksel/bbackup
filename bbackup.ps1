@@ -115,16 +115,39 @@ if((Test-Path "$dest\$name-full-*.7z") -eq 1) {
 write-host "Starting backup to $dest ..." -ForegroundColor green
 
 $proc = Start-Process -FilePath $p7z -ArgumentList $command -Wait -WindowStyle Hidden -PassThru
-	
-if($proc.ExitCode -eq 0) {
-	write-host "Backup to $dest is complete" -ForegroundColor green
-	write-host 
-	if($shutdown) {
-	    Stop-Computer
+
+switch ($proc.ExitCode) { 
+	0 {
+		write-host "Backup to $dest is complete" -ForegroundColor green
+		write-host 
+	} 
+	1 {
+		write-host "Backup to $dest completed with warnings " -ForegroundColor orange
+		write-host "one or more files were locked by some other application, so they were not compressed"
+		write-host
+	} 
+	2 {
+		write-host "Backup to $dest failed" -ForegroundColor red
+		write-host 
+	} 
+	7 {
+		write-host "Backup to $dest failed with Command line error" -ForegroundColor red
+		write-host 
+	} 
+	8 {
+		write-host "Backup to $dest failed becasue there is not enough memory for operation" -ForegroundColor red
+		write-host 
+	} 
+	255 {
+		write-host "User stopped the process" -ForegroundColor red
+		write-host 
+	} 
+	default {
+		write-host "Unknown Exit Code: " + $proc.ExitCode -ForegroundColor orange
+		write-host 
 	}
-} else {
-	write-host "Backup failed with exit code: " + $proc.ExitCode -ForegroundColor red
-	write-host 
 }
 
-
+if($shutdown) {
+	Stop-Computer
+}
