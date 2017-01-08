@@ -122,7 +122,7 @@ switch ($proc.ExitCode) {
 		write-host 
 	} 
 	1 {
-		write-host "Backup to $dest completed with warnings " -ForegroundColor orange
+		write-host "Backup to $dest completed with warnings " -ForegroundColor DarkYellow
 		write-host "one or more files were locked by some other application, so they were not compressed"
 		write-host
 	} 
@@ -143,7 +143,7 @@ switch ($proc.ExitCode) {
 		write-host 
 	} 
 	default {
-		write-host "Unknown Exit Code: " + $proc.ExitCode -ForegroundColor orange
+		write-host "Unknown Exit Code: " + $proc.ExitCode -ForegroundColor DarkYellow
 		write-host 
 	}
 }
