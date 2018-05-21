@@ -32,3 +32,11 @@ Option | Description | Default | Required?
 `help` | Displays Help Text | false | No
 
 To see all options run: `bbackup.ps1 -help`
+
+## Troubleshooting
+
+If you are not able to execute the script, make sure that PowerShell's ExecutionPolicy is set to Unrestricted. Run PowerShell as Administrator and run the command: `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Undefined` and confirm.
+
+Don't forget to set it back to the default `Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy AllSigned`
+
+
